@@ -14,7 +14,7 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', '');
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_NAME', 'mynewbookstore');
+DEFINE ('DB_NAME', 'mybookstore');
 
 /*our approach is based on the following:
 operation takes values 1,2,...
