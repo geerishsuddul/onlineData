@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+			<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+   		<script src="js/jquery.js"></script>
+         <script src="js/jquery.mobile-1.4.5.js"></script>
+         <script type="text/javascript" src="cordova.js"></script>
+			<title>Blank App</title>
+
+        <script type="text/javascript">
+
+            function searchBook(){
+                alert("Search Book Called");
+                var title_c = $("[name='title']").val();
+
+					var url = "http://localhost:8080/onlineData/index.php?operation=1&title="+title_c;
+				
+					var author_name = "xyz";
+					$.get(url,function(data,status){
+						alert("returned value is: "+data);
+						author_name = data;
+						$("#p_result").text("Author name: "+author_name);
+					});
+            }
+        
+
+
+			function insertBook(){
+               alert("insert Book Called");
+					var title_c = $("[name='title']").val();
+               var author_c = $("[name='author']").val();
+					var url = "http://localhost:8080/onlineData/index.php?operation=2&title="+title_c+"&author="+author_c;
+				
+					var response = null;
+					$.get(url,function(data,status){
+						alert("returned value is: "+data);
+						response = data;
+                  $("#p_result").text(response);
+				});
+			}
+		</script>
+		
+
+
+    </head>
+    <body>
+
+       <div data-role="page" id="pageone" data-theme="a">
+            <div data-role="header">
+                <h1>Working with online DB</h1>
+            </div>
+        
+            <div data-role="main" class="ui-content">
+                <form>
+                    <label class="ui-hidden-accessible">title</label>
+                    <input name="title" type="text" placeholder="title" />
+                    <label class="ui-hidden-accessible">author</label>
+                    <input name="author" type="text" placeholder="author" />
+                    <input type="submit" value="Search Author" onclick="searchBook()"/>
+                    <input type="submit" value="Insert Record" onclick="insertBook()"/>
+        
+                </form>
+                    <p id="p_result"></p>
+            </div>
+        
+            <div data-role="footer">
+                <h3>Working with online DB</h3>
+            </div>
+        </div>
+
+	
+    </body>
+</html>
